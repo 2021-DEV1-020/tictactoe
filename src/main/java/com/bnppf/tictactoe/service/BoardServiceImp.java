@@ -1,5 +1,6 @@
 package com.bnppf.tictactoe.service;
 
+import com.google.common.annotations.VisibleForTesting;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -28,7 +29,8 @@ public class BoardServiceImp implements BoardService {
         return board.values().size() == 9;
     }
 
-    public Map<String, Player> getBoard() {
+    @VisibleForTesting
+    Map<String, Player> getBoard() {
         return board;
     }
 
