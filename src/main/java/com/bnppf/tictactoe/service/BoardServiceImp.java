@@ -15,7 +15,6 @@ public class BoardServiceImp implements BoardService {
 
     public BoardServiceImp() {
         this.board = new HashMap<>();
-        this.end = false;
     }
 
     public void addValueToBoard(String position, Player player) {
@@ -26,18 +25,11 @@ public class BoardServiceImp implements BoardService {
     }
 
     public boolean isBoardFull() {
-        return board.values().stream().noneMatch(Objects::isNull);
+        return board.values().size() == 9;
     }
 
     public Map<String, Player> getBoard() {
         return board;
     }
 
-    public boolean isEnd() {
-        return end;
-    }
-
-    public void setEnd(boolean end) {
-        this.end = end;
-    }
 }
