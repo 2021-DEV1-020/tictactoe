@@ -1,6 +1,5 @@
 package com.bnppf.tictactoe.service;
 
-import com.bnppf.tictactoe.exceptions.TechnicalException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -20,7 +19,10 @@ public class BoardServiceImp implements BoardService {
     }
 
     public void addValueToBoard(String position, Player player) {
-
+        Optional.ofNullable(board.get(position)).ifPresent(value -> {
+            throw new IllegalArgumentException("The position is already played");
+        });
+        board.put(position, player);
     }
 
     public boolean isBoardFull() {
