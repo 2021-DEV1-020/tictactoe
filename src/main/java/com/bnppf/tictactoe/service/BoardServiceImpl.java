@@ -1,20 +1,20 @@
 package com.bnppf.tictactoe.service;
 
+import com.bnppf.tictactoe.enums.Player;
 import com.google.common.annotations.VisibleForTesting;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class BoardServiceImp implements BoardService {
+public class BoardServiceImpl implements BoardService {
 
     private final Map<String, Player> board;
     private boolean end;
 
-    public BoardServiceImp() {
+    public BoardServiceImpl() {
         this.board = new HashMap<>();
     }
 

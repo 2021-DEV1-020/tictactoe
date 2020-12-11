@@ -1,4 +1,4 @@
-package com.bnppf.tictactoe.service;
+package com.bnppf.tictactoe.enums;
 
 public enum Player {
 

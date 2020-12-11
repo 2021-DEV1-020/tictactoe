@@ -1,5 +1,6 @@
 package com.bnppf.tictactoe.service;
 
+import com.bnppf.tictactoe.enums.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,24 +19,24 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-class BoardServiceImpTest {
+class BoardServiceImplTest {
 
     @InjectMocks
-    BoardServiceImp boardServiceImp;
+    BoardServiceImpl boardServiceImpl;
 
     @DisplayName("Verify that adding data to board is successful")
     @ParameterizedTest
     @MethodSource("provideData")
-    void addValueToBoard(List<String> positions, Player player,  boolean exception, int size) {
+    void addValueToBoard(List<String> positions, Player player, boolean exception, int size) {
 
         if (exception) {
             Assertions.assertThrows(IllegalArgumentException.class, () -> {
-                positions.forEach(position -> boardServiceImp.addValueToBoard(position, player));
+                positions.forEach(position -> boardServiceImpl.addValueToBoard(position, player));
             });
         }
         else {
-            positions.forEach(position -> boardServiceImp.addValueToBoard(position, player));
-            assertThat(boardServiceImp.getBoard())
+            positions.forEach(position -> boardServiceImpl.addValueToBoard(position, player));
+            assertThat(boardServiceImpl.getBoard())
                     .hasSize(size)
                     .containsValues(player);
         }
@@ -53,22 +54,22 @@ class BoardServiceImpTest {
     @Test
     void isBoardFull() {
         Arrays.asList("1","2","6","7","8")
-                .forEach(position -> boardServiceImp.addValueToBoard(position, Player.PLAYER_1));
+                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.PLAYER_1));
         Arrays.asList("3","4","5","9")
-                .forEach(position -> boardServiceImp.addValueToBoard(position, Player.PLAYER_2));
+                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.PLAYER_2));
 
-        assertThat(boardServiceImp.isBoardFull()).isEqualTo(true);
+        assertThat(boardServiceImpl.isBoardFull()).isEqualTo(true);
     }
 
     @DisplayName("Verify that the board is not full")
     @Test
     void isBoardFullNot() {
         Arrays.asList("1","2","6")
-                .forEach(position -> boardServiceImp.addValueToBoard(position, Player.PLAYER_1));
+                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.PLAYER_1));
         Arrays.asList("3","4","5")
-                .forEach(position -> boardServiceImp.addValueToBoard(position, Player.PLAYER_2));
+                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.PLAYER_2));
 
-        assertThat(boardServiceImp.isBoardFull()).isEqualTo(false);
+        assertThat(boardServiceImpl.isBoardFull()).isEqualTo(false);
     }
 
 }
