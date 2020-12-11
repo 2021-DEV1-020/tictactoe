@@ -2,11 +2,13 @@
 
 The api exposes three endpoints
 
-`GET  ==> /board`
+`GET  ==> /board, get all the positions selected from 1 to 9 `
 
-`POST ==> /board/{position}`
+`POST ==> /board/{position}, adds the position and type selected (X or 0)`
 
-`GET ==> /swagger-ui.html`
+`DELETE ==> /board, reset the board to play another game`
+
+`GET ==> /swagger-ui.html, to display the rest services developed in UI`
 
 Requirements
 For building and running the application you need:
@@ -35,3 +37,8 @@ There are many ways to run spring boot applications :
      All nine squares are filled.
      If a player is able to draw three X’s or three O’s in a row, that player wins.
      If all nine squares are filled and neither player has three in a row, the game is a draw.
+     The numbers below reprensents the positions of the X and O selection
+     
+                                 | 1 | 2 | 3 |
+                                 | 4 | 5 | 6 |
+                                 | 7 | 8 | 9 |
