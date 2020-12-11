@@ -5,6 +5,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class WinnerServiceImpl implements WinnerService {
 
+    private final BoardService boardService;
+
+    public WinnerServiceImpl(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
     public boolean checkForWin() {
 
