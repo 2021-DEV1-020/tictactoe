@@ -1,6 +1,7 @@
 package com.bnppf.tictactoe.service;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,10 +33,11 @@ class WinnerServiceImplTest {
 
 
     @ParameterizedTest
+    @DisplayName("Verify that which player is the winner")
     @MethodSource("provideData")
     void checkForWin(BoardServiceImp boardServiceImp, boolean expected) {
-        Assert.isTrue(winnerServiceImpl.checkForWin(), "cool");
-        assertEquals(expected, boardServiceImp.isBoardFull());
+
+        assertThat(winnerServiceImpl.checkForWin()).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideData() {
@@ -68,6 +71,17 @@ class WinnerServiceImplTest {
         boardServiceImp.addValueToBoard("4", Player.PLAYER_2);
         boardServiceImp.addValueToBoard("6", Player.PLAYER_2);
         arguments.add(Arguments.of(boardServiceImp, true));
+        boardServiceImp = new BoardServiceImp();
+        boardServiceImp.addValueToBoard("1", Player.PLAYER_1);
+        boardServiceImp.addValueToBoard("3", Player.PLAYER_2);
+        boardServiceImp.addValueToBoard("2", Player.PLAYER_1);
+        boardServiceImp.addValueToBoard("4", Player.PLAYER_2);
+        boardServiceImp.addValueToBoard("6", Player.PLAYER_1);
+        boardServiceImp.addValueToBoard("5", Player.PLAYER_2);
+        boardServiceImp.addValueToBoard("7", Player.PLAYER_1);
+        boardServiceImp.addValueToBoard("9", Player.PLAYER_2);
+        boardServiceImp.addValueToBoard("8", Player.PLAYER_1);
+        arguments.add(Arguments.of(boardServiceImp, false));
 
         return arguments.stream();
     }
