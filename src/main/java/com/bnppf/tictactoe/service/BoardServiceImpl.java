@@ -29,8 +29,7 @@ public class BoardServiceImpl implements BoardService {
         return board.values().size() == 9;
     }
 
-    @VisibleForTesting
-    Map<String, Player> getBoard() {
+    public Map<String, Player> getBoard() {
         return board;
     }
 
