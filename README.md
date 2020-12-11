@@ -42,3 +42,6 @@ There are many ways to run spring boot applications :
                                  | 1 | 2 | 3 |
                                  | 4 | 5 | 6 |
                                  | 7 | 8 | 9 |
+                                 
+
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/swagger.jpg?raw=true)
