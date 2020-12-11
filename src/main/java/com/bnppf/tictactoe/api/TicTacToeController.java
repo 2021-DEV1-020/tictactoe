@@ -35,11 +35,19 @@ public class TicTacToeController {
     public Mono<String> addToBoard(@PathVariable(value = "position") String  position,
                                                  @RequestParam(value = "player") Player player) {
 
+        if (boardService.getBoard().isEmpty()
+                && Player.O.equals(player)) {
+            return Mono.just("X always goes first");
+        }
         boardService.addValueToBoard(position, player);
         if (winnerService.checkForWin()) {
-            return Mono.just("You are the winner");
+            return Mono.just(String.format("You player %s is the winner", player.getValue()));
         }
-        return Mono.just(position);
+        else if (!winnerService.checkForWin()
+                    && boardService.getBoard().size() == 9) {
+            return Mono.just("The game is a draw");
+        }
+        return Mono.just(String.format("The position %s is added to the board", position));
     }
 
 }

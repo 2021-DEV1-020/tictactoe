@@ -44,9 +44,9 @@ class BoardServiceImplTest {
 
     private static Stream<Arguments> provideData() {
         List<Arguments> arguments = new ArrayList<>();
-        arguments.add(Arguments.of(Arrays.asList("1","2","3","4","5","6","7","8","9"), Player.PLAYER_1, false, 9));
-        arguments.add(Arguments.of(Arrays.asList("1","2","3","4","5"), Player.PLAYER_1, false, 5));
-        arguments.add(Arguments.of(Arrays.asList("1","2","3","3"), Player.PLAYER_2, true, 3));
+        arguments.add(Arguments.of(Arrays.asList("1","2","3","4","5","6","7","8","9"), Player.X, false, 9));
+        arguments.add(Arguments.of(Arrays.asList("1","2","3","4","5"), Player.X, false, 5));
+        arguments.add(Arguments.of(Arrays.asList("1","2","3","3"), Player.O, true, 3));
         return arguments.stream();
     }
 
@@ -54,9 +54,9 @@ class BoardServiceImplTest {
     @Test
     void isBoardFull() {
         Arrays.asList("1","2","6","7","8")
-                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.PLAYER_1));
+                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.X));
         Arrays.asList("3","4","5","9")
-                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.PLAYER_2));
+                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.O));
 
         assertThat(boardServiceImpl.isBoardFull()).isEqualTo(true);
     }
@@ -65,9 +65,9 @@ class BoardServiceImplTest {
     @Test
     void isBoardFullNot() {
         Arrays.asList("1","2","6")
-                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.PLAYER_1));
+                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.X));
         Arrays.asList("3","4","5")
-                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.PLAYER_2));
+                .forEach(position -> boardServiceImpl.addValueToBoard(position, Player.O));
 
         assertThat(boardServiceImpl.isBoardFull()).isEqualTo(false);
     }

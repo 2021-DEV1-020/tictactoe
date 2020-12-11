@@ -2,8 +2,8 @@ package com.bnppf.tictactoe.enums;
 
 public enum Player {
 
-    PLAYER_1("X"),
-    PLAYER_2("O");
+    X("X"),
+    O("O");
 
     private final String value;
 
