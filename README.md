@@ -44,4 +44,4 @@ There are many ways to run spring boot applications :
                                  | 7 | 8 | 9 |
                                  
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/swagger.jpg?raw=true)
+![alt text](https://github.com/2021-DEV1-020/tictactoe/blob/main/swagger.jpg)
