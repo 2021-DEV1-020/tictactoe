@@ -20,7 +20,6 @@ public class TicTacToeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TicTacToeController.class);
 
-
     private final WinnerService winnerService;
     private final BoardService boardService;
 
