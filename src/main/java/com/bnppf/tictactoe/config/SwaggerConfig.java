@@ -34,8 +34,8 @@ public class SwaggerConfig {
 
 
     private ApiInfo apiInfo() {
-        return new ApiInfo("Tic Tac Toe REST API", "Tic Tac Toe REST API", "V0.1", "TODO",
-                new Contact("Contact TODO", "domain", "todo@gmail.com"), "TODO", "TODO", Collections.emptyList());
+        return new ApiInfo("Tic Tac Toe REST API", "API to present webservices of Tic Tac Toe", "V0.1", "TODO",
+                new Contact("Contact TODO", "tictactoe.com", "tictactoe@gmail.com"), "me", "me", Collections.emptyList());
 
     }
 }
