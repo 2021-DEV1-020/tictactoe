@@ -24,7 +24,7 @@ class BoxesDiagonalsStrategyImplTest {
     @ParameterizedTest
     @DisplayName("Verify that which player is the winner")
     @MethodSource("provideData")
-    void checkForWin(List<String> list, boolean expected) {
+    void checkForWin(List<Integer> list, boolean expected) {
         assertThat(boxesDiagonalsStrategy.checkForWin(list)
                 .orElse(false))
                 .isEqualTo(expected);
@@ -32,10 +32,10 @@ class BoxesDiagonalsStrategyImplTest {
 
     private static Stream<Arguments> provideData() {
         List<Arguments> arguments = new ArrayList<>();
-        arguments.add(Arguments.of(Arrays.asList("1", "5", "9"), true));
-        arguments.add(Arguments.of(Arrays.asList("1", "5"), false));
-        arguments.add(Arguments.of(Arrays.asList("5", "3", "7"), true));
-        arguments.add(Arguments.of(Arrays.asList("3", "6", "9"), false));
+        arguments.add(Arguments.of(Arrays.asList(1, 5, 9), true));
+        arguments.add(Arguments.of(Arrays.asList(1, 5), false));
+        arguments.add(Arguments.of(Arrays.asList(5, 3, 7), true));
+        arguments.add(Arguments.of(Arrays.asList(3, 6, 9), false));
         return arguments.stream();
     }
 }

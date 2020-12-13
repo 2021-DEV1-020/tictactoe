@@ -14,9 +14,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,54 +35,54 @@ class WinnerServiceImplTest {
     @ParameterizedTest
     @DisplayName("Verify that which player is the winner")
     @MethodSource("provideData")
-    void checkForWin(BoardService boardService, boolean expected) {
+    void checkForWin(Map<Integer, Player> board, boolean expected) {
 
-        winnerService = new WinnerServiceImpl(boardService, checkBoxSrategyFactory);
-        assertThat(winnerService.checkForWin()).isEqualTo(expected);
+        winnerService = new WinnerServiceImpl(checkBoxSrategyFactory);
+        assertThat(winnerService.checkForWin(board)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideData() {
 
-        BoardService boardServiceImpl = new BoardServiceImpl();
+        Map<Integer, Player> board = new HashMap<>();
         List<Arguments> arguments = new ArrayList<>();
-        boardServiceImpl.addValueToBoard("1", Player.X);
-        boardServiceImpl.addValueToBoard("2", Player.X);
-        boardServiceImpl.addValueToBoard("3", Player.X);
-        boardServiceImpl.addValueToBoard("4", Player.O);
-        boardServiceImpl.addValueToBoard("5", Player.O);
-        arguments.add(Arguments.of(boardServiceImpl, true));
-        boardServiceImpl = new BoardServiceImpl();
-        boardServiceImpl.addValueToBoard("1", Player.X);
-        boardServiceImpl.addValueToBoard("5", Player.X);
-        boardServiceImpl.addValueToBoard("9", Player.X);
-        boardServiceImpl.addValueToBoard("2", Player.O);
-        boardServiceImpl.addValueToBoard("4", Player.O);
-        arguments.add(Arguments.of(boardServiceImpl, true));
-        boardServiceImpl = new BoardServiceImpl();
-        boardServiceImpl.addValueToBoard("7", Player.X);
-        boardServiceImpl.addValueToBoard("5", Player.X);
-        boardServiceImpl.addValueToBoard("3", Player.X);
-        boardServiceImpl.addValueToBoard("4", Player.O);
-        boardServiceImpl.addValueToBoard("6", Player.O);
-        arguments.add(Arguments.of(boardServiceImpl, true));
-        boardServiceImpl = new BoardServiceImpl();
-        boardServiceImpl.addValueToBoard("7", Player.X);
-        boardServiceImpl.addValueToBoard("5", Player.O);
-        boardServiceImpl.addValueToBoard("3", Player.X);
-        boardServiceImpl.addValueToBoard("4", Player.O);
-        boardServiceImpl.addValueToBoard("6", Player.O);
-        arguments.add(Arguments.of(boardServiceImpl, true));
-        boardServiceImpl = new BoardServiceImpl();
-        boardServiceImpl.addValueToBoard("1", Player.X);
-        boardServiceImpl.addValueToBoard("3", Player.O);
-        boardServiceImpl.addValueToBoard("2", Player.X);
-        boardServiceImpl.addValueToBoard("4", Player.O);
-        boardServiceImpl.addValueToBoard("6", Player.X);
-        boardServiceImpl.addValueToBoard("5", Player.O);
-        boardServiceImpl.addValueToBoard("7", Player.X);
-        boardServiceImpl.addValueToBoard("9", Player.O);
-        boardServiceImpl.addValueToBoard("8", Player.X);
-        arguments.add(Arguments.of(boardServiceImpl, false));
+        board.put(1, Player.X);
+        board.put(2, Player.X);
+        board.put(3, Player.X);
+        board.put(4, Player.O);
+        board.put(5, Player.O);
+        arguments.add(Arguments.of(board, true));
+        board = new HashMap<>();
+        board.put(1, Player.X);
+        board.put(5, Player.X);
+        board.put(9, Player.X);
+        board.put(2, Player.O);
+        board.put(4, Player.O);
+        arguments.add(Arguments.of(board, true));
+        board = new HashMap<>();
+        board.put(7, Player.X);
+        board.put(5, Player.X);
+        board.put(3, Player.X);
+        board.put(4, Player.O);
+        board.put(6, Player.O);
+        arguments.add(Arguments.of(board, true));
+        board = new HashMap<>();
+        board.put(7, Player.X);
+        board.put(5, Player.O);
+        board.put(3, Player.X);
+        board.put(4, Player.O);
+        board.put(6, Player.O);
+        arguments.add(Arguments.of(board, true));
+        board = new HashMap<>();
+        board.put(1, Player.X);
+        board.put(3, Player.O);
+        board.put(2, Player.X);
+        board.put(4, Player.O);
+        board.put(6, Player.X);
+        board.put(5, Player.O);
+        board.put(7, Player.X);
+        board.put(9, Player.O);
+        board.put(8, Player.X);
+        arguments.add(Arguments.of(board, false));
 
         return arguments.stream();
     }

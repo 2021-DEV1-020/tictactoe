@@ -9,9 +9,9 @@ import java.util.Optional;
 @Service
 public class BoxesColumnsStrategyImpl implements BoxesStrategy {
     @Override
-    public Optional<Boolean> checkForWin(List<String> list) {
-        return Optional.of(list.containsAll(Arrays.asList("1", "4", "7"))
-                || list.containsAll(Arrays.asList("2", "5", "8"))
-                || list.containsAll(Arrays.asList("3", "6", "9")));
+    public Optional<Boolean> checkForWin(List<Integer> list) {
+        return Optional.of(list.containsAll(Arrays.asList(1, 4, 7))
+                || list.containsAll(Arrays.asList(2, 5, 8))
+                || list.containsAll(Arrays.asList(3, 6, 9)));
     }
 }

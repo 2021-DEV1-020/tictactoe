@@ -1,12 +1,12 @@
 # Tic Tac Toe - API
 
-The api exposes three endpoints
+The api exposes four endpoints
 
-`GET  ==> /board, get all the positions selected from 1 to 9 `
+`GET  ==> /api/v1/board, get the board`
 
-`POST ==> /board/{position}, adds the position and type selected (X or 0)`
+`POST ==> /api/v1/board, adds the request to the board`
 
-`DELETE ==> /board, reset the board to play another game`
+`DELETE ==> /api/v1/board, reset the board to play another game`
 
 `GET ==> /swagger-ui.html, to display the rest services developed in UI`
 

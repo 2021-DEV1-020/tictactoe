@@ -5,5 +5,5 @@ import java.util.Optional;
 
 public interface BoxesStrategy {
 
-    Optional<Boolean> checkForWin(List<String> list);
+    Optional<Boolean> checkForWin(List<Integer> list);
 }

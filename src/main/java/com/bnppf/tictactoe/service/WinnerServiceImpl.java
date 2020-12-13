@@ -14,21 +14,19 @@ import java.util.stream.Collectors;
 @Service
 public class WinnerServiceImpl implements WinnerService {
 
-    private final BoardService boardService;
     private final CheckBoxSrategyFactory checkBoxSrategyFactory;
 
-    public WinnerServiceImpl(BoardService boardService, CheckBoxSrategyFactory checkBoxSrategyFactory) {
-        this.boardService = boardService;
+    public WinnerServiceImpl(CheckBoxSrategyFactory checkBoxSrategyFactory) {
         this.checkBoxSrategyFactory = checkBoxSrategyFactory;
     }
 
-    public boolean checkForWin() {
+    public boolean checkForWin(Map<Integer, Player> board) {
 
-        return checkWinForPlayerX() || checkWinForPlayerO();
+        return checkWinForPlayerX(board) || checkWinForPlayerO(board);
     }
 
-    private boolean checkWinForPlayerX() {
-        List<String> player1Choices = this.boardService.getBoard().entrySet().stream()
+    private boolean checkWinForPlayerX(Map<Integer, Player> board) {
+        List<Integer> player1Choices = board.entrySet().stream()
                 .filter(e -> Objects.equals(e.getValue(), Player.X))
                 .map(Map.Entry::getKey).collect(Collectors.toList());
         Predicate<BoxesStrategy> winner1Check = boxesStrategy -> boxesStrategy.checkForWin(player1Choices)
@@ -38,8 +36,8 @@ public class WinnerServiceImpl implements WinnerService {
                 .stream().anyMatch(winner1Check);
     }
 
-    private boolean checkWinForPlayerO() {
-        List<String> player2Choices = this.boardService.getBoard().entrySet().stream()
+    private boolean checkWinForPlayerO(Map<Integer, Player> board) {
+        List<Integer> player2Choices = board.entrySet().stream()
                 .filter(e -> Objects.equals(e.getValue(), Player.O))
                 .map(Map.Entry::getKey).collect(Collectors.toList());
         Predicate<BoxesStrategy> winner2Check = boxesStrategy -> boxesStrategy.checkForWin(player2Choices)

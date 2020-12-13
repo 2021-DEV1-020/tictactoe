@@ -10,8 +10,8 @@ import java.util.Optional;
 public class BoxesDiagonalsStrategyImpl implements BoxesStrategy {
 
     @Override
-    public Optional<Boolean> checkForWin(List<String> list) {
-        return Optional.of(list.containsAll(Arrays.asList("1", "5", "9"))
-                || list.containsAll(Arrays.asList("3", "5", "7")));
+    public Optional<Boolean> checkForWin(List<Integer> list) {
+        return Optional.of(list.containsAll(Arrays.asList(1, 5, 9))
+                || list.containsAll(Arrays.asList(3, 5, 7)));
     }
 }
