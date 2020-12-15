@@ -3,10 +3,7 @@ package com.bnppf.tictactoe.model;
 import com.bnppf.tictactoe.enums.Player;
 import lombok.*;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Builder
 @Getter
@@ -14,12 +11,11 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class TurnRequest {
 
-    @NotBlank(message = "Player cannot be null")
+
     Player player;
 
-    @Max(9)
-    @Min(1)
-    @NotNull
+    @Max(value = 9, message = "Position should be less than 9")
+    @Min(value = 1, message = "Position should be bigger than 1")
     Integer position;
 
 }
