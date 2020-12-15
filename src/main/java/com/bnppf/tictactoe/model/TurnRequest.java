@@ -1,9 +1,7 @@
 package com.bnppf.tictactoe.model;
 
 import com.bnppf.tictactoe.enums.Player;
-import lombok.Builder;
-import lombok.ToString;
-import lombok.Value;
+import lombok.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -11,7 +9,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Builder
-@Value
+@Getter
+@Setter
 @ToString
 public class TurnRequest {
 
