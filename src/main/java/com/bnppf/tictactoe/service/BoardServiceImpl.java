@@ -40,13 +40,13 @@ public class BoardServiceImpl implements BoardService {
 
         LOGGER.info("add value to board  {} ", turnRequest);
 
+        addValueToBoard(turnRequest.getPosition(), turnRequest.getPlayer());
         if (winnerService.checkForWin(board)) {
             return TurnResponse.builder()
                     .board(board)
                     .message(String.format(MESSAGE_2, turnRequest.getPlayer()))
                     .build();
         } else {
-            addValueToBoard(turnRequest.getPosition(), turnRequest.getPlayer());
             if (isBoardFull()) {
                 return TurnResponse.builder()
                         .board(board)
