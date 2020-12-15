@@ -8,7 +8,7 @@ import java.util.List;
 @Component
 public class CheckBoxSrategyFactoryImpl implements CheckBoxSrategyFactory {
 
-    List<BoxesStrategy> boxesStrategies;
+    private final List<BoxesStrategy> boxesStrategies;
 
     public CheckBoxSrategyFactoryImpl(List<BoxesStrategy> boxesStrategies) {
         this.boxesStrategies = boxesStrategies;

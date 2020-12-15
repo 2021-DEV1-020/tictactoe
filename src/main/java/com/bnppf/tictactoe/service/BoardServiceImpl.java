@@ -47,17 +47,17 @@ public class BoardServiceImpl implements BoardService {
                     .build();
         } else {
             addValueToBoard(turnRequest.getPosition(), turnRequest.getPlayer());
-        }
-        if (!winnerService.checkForWin(board) && isBoardFull()) {
+            if (isBoardFull()) {
+                return TurnResponse.builder()
+                        .board(board)
+                        .message(MESSAGE_3)
+                        .build();
+            }
             return TurnResponse.builder()
                     .board(board)
-                    .message(MESSAGE_3)
+                    .message(MESSAGE_4)
                     .build();
         }
-        return TurnResponse.builder()
-                .board(board)
-                .message(MESSAGE_4)
-                .build();
     }
 
     @Override
