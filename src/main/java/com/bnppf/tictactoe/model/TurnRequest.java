@@ -9,6 +9,8 @@ import javax.validation.constraints.*;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class TurnRequest {
 
 
